@@ -1,17 +1,26 @@
-// Line Art Demo
-// Agnes
-// September 9, 2019
-//
-// Extra for Experts:
-// - describe what you did to take this project "above and beyond"
+let mickey;
+let scalar = 1;
 
-
+function preload() {
+  mickey = loadImage("assets/mickey.png");
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  background(255);
 }
 
 function draw() {
- line(mouseX,mouseY,pmouseX,pmouseY);
+  background(255);
+
+  if (keyIsPressed) {
+    if (keyCode === UP_ARROW) {
+      scalar *= 1.02;
+    }
+    else if (keyCode === DOWN_ARROW) {
+      scalar /= 1.02;
+    }
+  }
+
+  imageMode(CENTER);
+  image(mickey, mouseX, mouseY, mickey.width * scalar, mickey.height * scalar)
 }
